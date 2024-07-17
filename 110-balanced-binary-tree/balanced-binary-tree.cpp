@@ -12,28 +12,22 @@
 class Solution {
 public:
     bool isBalanced(TreeNode* root) {
-        return isBalancedUtil(root);
+        return isBalancedUtil(root) != -1;
     }
 
-    bool isBalancedUtil(TreeNode* root){
-        if(root == nullptr) return true;
+    int isBalancedUtil(TreeNode* root){
+        if(root == nullptr) return 0;
 
-        bool lBalance = isBalancedUtil(root->left);
-        bool rBalance = isBalancedUtil(root->right);
+        int lHeight = isBalancedUtil(root->left);
+        if(lHeight == -1) return -1;
 
-        int lHeight = 0, rHeight = 0, absHeight = 0;
-        getHeight(root->left, 1, lHeight);
-        getHeight(root->right, 1, rHeight);
-        absHeight = (lHeight > rHeight) ? lHeight - rHeight : rHeight - lHeight;
+        int rHeight = isBalancedUtil(root->right);
+        if(rHeight == -1) return -1;
 
-        return lBalance && rBalance && (absHeight <= 1);
+        int absHeight = (lHeight > rHeight) ? lHeight - rHeight : rHeight - lHeight;
+        if(absHeight > 1) return -1;
+
+        return 1+max(lHeight, rHeight);
     }
-
-    void getHeight(TreeNode* root, int cDepth, int& depth){
-        if(root == nullptr) return;
-
-        depth = cDepth > depth ? cDepth : depth;
-        getHeight(root->left, cDepth+1, depth);
-        getHeight(root->right, cDepth+1, depth);
-    }
+    
 };
