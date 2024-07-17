@@ -12,6 +12,12 @@
 class Solution {
     int ans = INT_MAX;
 public:
+    int speed = []() {
+        ios::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+        return 0;
+    }();
     int minDepth(TreeNode* root) {
         if(root == nullptr) return 0;
 
