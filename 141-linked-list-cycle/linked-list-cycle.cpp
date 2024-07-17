@@ -16,17 +16,18 @@ public:
     }(); 
 
     bool hasCycle(ListNode *head) {
-        if(head == nullptr) return false;
+        if (head == nullptr) return false; // If the list is empty, return false
 
-        ListNode* rabbit = head->next;
-        ListNode* tortoise = head;
+        ListNode* rabbit = head->next; // Move rabbit two steps at a time
+        ListNode* tortoise = head;     // Move tortoise one step at a time
 
-        while(rabbit && rabbit->next){
-            if(tortoise == rabbit) return true;
-            tortoise = tortoise->next;
-            rabbit = rabbit->next->next;
+        while (rabbit && rabbit->next) {
+            if (tortoise == rabbit) return true; // If they meet, there's a cycle
+
+            tortoise = tortoise->next;         // Move tortoise one step
+            rabbit = rabbit->next->next;       // Move rabbit two steps
         }
 
-        return false;
+        return false; // If rabbit reaches the end (NULL), there's no cycle
     }
 };
