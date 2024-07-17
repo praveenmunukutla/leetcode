@@ -12,10 +12,22 @@
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p == nullptr && q == nullptr) return true;
-        if(p != nullptr && q == nullptr) return false;
-        if(p == nullptr && q != nullptr) return false;
-
-        return p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        // Base case: Both trees are empty, they are identical
+        if (p == nullptr && q == nullptr) {
+            return true;
+        }
+        
+        // If one tree is empty and the other is not, they are not identical
+        if (p == nullptr || q == nullptr) {
+            return false;
+        }
+        
+        // Check if current nodes' values are the same
+        if (p->val != q->val) {
+            return false;
+        }
+        
+        // Recursively check left and right subtrees
+        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
     }
 };
