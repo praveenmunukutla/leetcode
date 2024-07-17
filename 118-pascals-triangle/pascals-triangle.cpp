@@ -19,7 +19,7 @@ public:
             for(int j = 1; j <= i; j++){
               trow.push_back(getNcR(i, j));
             }
-            ans.push_back(move(trow));
+            ans.emplace_back(move(trow));
         }
 
         return move(ans);
