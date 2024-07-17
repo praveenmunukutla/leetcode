@@ -4,17 +4,20 @@ public:
         int len = s.length();
         int sum = 0;
         bool wstarted = false;
-        for(int i = len-1; i >= 0; i--){
-            if(s[i] == ' '){
-                if(wstarted == false)
+        
+        // Traverse the string from the end
+        for(int i = len-1; i >= 0; i--) {
+            if(s[i] == ' ') {
+                // Skip leading spaces or stop if a word has been counted
+                if(!wstarted)
                     continue;
-                return sum;
+                return sum; // Return the length of the last word
             }
 
-            wstarted = true;
-            sum++;
+            wstarted = true; // Mark that a word has started
+            sum++; // Increment the length of the last word
         }
 
-        return sum;
+        return sum; // Return the length of the last word (whole string case)
     }
 };
