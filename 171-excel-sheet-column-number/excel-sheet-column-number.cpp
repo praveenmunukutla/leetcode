@@ -8,7 +8,7 @@ public:
     }(); 
 
      int titleToNumber(string columnTitle) {
-        long long ans = 0;  // Use long long to avoid overflow
+        int ans = 0;  // Use long long to avoid overflow
         
         for (char c : columnTitle) {
             ans = ans * 26 + (c - 'A' + 1);
