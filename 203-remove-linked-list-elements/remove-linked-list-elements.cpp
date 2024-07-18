@@ -21,10 +21,8 @@ public:
         while(head){
             if(head->val == val){
                 prev->next = head->next;
-            }else{
+            }else
                 prev = head;
-            }
-
             head = head->next;
         }
 
