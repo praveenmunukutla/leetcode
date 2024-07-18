@@ -11,9 +11,11 @@
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
+        // Initialize slow and fast pointers
         ListNode* slow = head;
         ListNode* fast = head;
 
+        // Calculate the length of the linked list
         int len = 0;
         ListNode* curr = head;
         while(curr){
@@ -21,15 +23,19 @@ public:
             curr = curr->next;
         }
 
+        // Move fast pointer to the middle of the list
         while(fast != nullptr && fast->next != nullptr){
             slow = slow->next;
             fast = fast->next->next;
         }
 
+        // Adjust slow pointer for odd length lists
         if(len % 2 != 0) slow = slow->next;
 
+        // Reverse the second half of the linked list
         ListNode* rlist = reverse(slow);
 
+        // Compare the original first half with the reversed second half
         while(head != nullptr && rlist != nullptr){
             if(head->val != rlist->val) return false;
             head = head->next;
@@ -39,6 +45,7 @@ public:
         return true;
     }
 
+    // Function to reverse a linked list
     ListNode* reverse(ListNode* node){
         if(node == nullptr) return nullptr;
 
