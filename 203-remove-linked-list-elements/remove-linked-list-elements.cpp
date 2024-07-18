@@ -10,30 +10,28 @@
  */
 class Solution {
 public:
-     int speed = []() {
-        ios::sync_with_stdio(false); // Disable synchronization with C I/O 
-        cin.tie(NULL); // Untie cin from cout 
-        cout.tie(NULL); // Untie cout (though this is not necessary) 
-        return 0; 
-    }(); 
-
     ListNode* removeElements(ListNode* head, int val) {
+        // Handle the case where the list is initially empty
         if(head == nullptr) return nullptr;
 
+        // Create a dummy node to handle cases where the head itself might be removed
         ListNode* temp = new ListNode(-1);
         temp->next = head;
 
-        ListNode* prev = temp;
+        ListNode* prev = temp;  // Pointer to track the previous node
 
+        // Traverse through the list
         while(head){
+            // If current node's value equals val, skip over it
             if(head->val == val){
-                prev->next = head->next;
+                prev->next = head->next;  // Remove current node by skipping it
             }
-            else 
-                prev = head;
-            head = head->next;
+            else {
+                prev = head;  // Update prev pointer to current node
+            }
+            head = head->next;  // Move to the next node
         }
 
-        return temp->next;
+        return temp->next;  // Return the adjusted head of the list
     }
 };
