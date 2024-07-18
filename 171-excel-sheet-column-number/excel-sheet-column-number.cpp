@@ -7,13 +7,14 @@ public:
         return 0; 
     }(); 
 
-    int titleToNumber(string columnTitle) {
-         int ans = 0;
-         int multiplier = 1;
-         for(int i = columnTitle.length()-1, j = 0; i >= 0; i--, j++){
-             ans += pow(26,j)*(columnTitle[i]-'A'+1);
-         }
-         return ans;
+     int titleToNumber(string columnTitle) {
+        long long ans = 0;  // Use long long to avoid overflow
+        
+        for (char c : columnTitle) {
+            ans = ans * 26 + (c - 'A' + 1);
+        }
+
+        return static_cast<int>(ans);  // Cast back to int if needed
     }
 
     inline int pow(int val, int x){
