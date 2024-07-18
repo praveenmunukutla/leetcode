@@ -25,12 +25,15 @@ public:
             char ch = pattern[i];
             string word = strs[i];
 
-            if(cwmap.find(ch)==cwmap.end() && wcmap.find(word) == wcmap.end()){
+            auto citr = cwmap.find(ch);
+            auto witr = wcmap.find(word);
+
+            if(citr == cwmap.end() && witr == wcmap.end()){
                 cwmap[ch]=word;
                 wcmap[word]=ch;
-            }else if(cwmap.find(ch)==cwmap.end() && wcmap.find(word) != wcmap.end()){
+            }else if(citr == cwmap.end() && witr != wcmap.end()){
                 return false;
-            }else if(cwmap.find(ch)!=cwmap.end() && wcmap.find(word) == wcmap.end()){
+            }else if(citr != cwmap.end() && witr == wcmap.end()){
                 return false;
             }else {
                 if(!(cwmap[ch] == word && wcmap[word] == ch))
