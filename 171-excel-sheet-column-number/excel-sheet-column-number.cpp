@@ -9,6 +9,7 @@ public:
 
     int titleToNumber(string columnTitle) {
          int ans = 0;
+         int multiplier = 1;
          for(int i = columnTitle.length()-1, j = 0; i >= 0; i--, j++){
              ans += pow(26,j)*(columnTitle[i]-'A'+1);
          }
