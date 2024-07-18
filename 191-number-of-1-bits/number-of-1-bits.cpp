@@ -9,14 +9,27 @@ public:
     }(); 
 
     // Function to calculate the Hamming weight of an integer n
+    // int hammingWeight(int n) {
+    //     int ans = 0; // Initialize a variable to store the count of 1 bits
+        
+    //     // Iterate through each bit of n
+    //     while(n){
+    //         if(n & 1)  // Check if the least significant bit (LSB) of n is 1
+    //             ans++; // Increment the count if the LSB is 1
+    //         n = n >> 1; // Shift n right by 1 bit to process the next bit
+    //     }
+        
+    //     return ans; // Return the count of 1 bits (Hamming weight)
+    // }
+
+    // Function to calculate the Hamming weight of an integer n
     int hammingWeight(int n) {
         int ans = 0; // Initialize a variable to store the count of 1 bits
         
         // Iterate through each bit of n
         while(n){
-            if(n & 1)  // Check if the least significant bit (LSB) of n is 1
-                ans++; // Increment the count if the LSB is 1
-            n = n >> 1; // Shift n right by 1 bit to process the next bit
+            n = n & n-1;
+            ans++;
         }
         
         return ans; // Return the count of 1 bits (Hamming weight)
