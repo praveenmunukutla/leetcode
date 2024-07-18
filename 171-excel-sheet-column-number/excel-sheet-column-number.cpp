@@ -1,19 +1,17 @@
 class Solution {
 public:
-     int speed = []() {
-        ios::sync_with_stdio(false); // Disable synchronization with C I/O 
-        cin.tie(NULL); // Untie cin from cout 
-        cout.tie(NULL); // Untie cout (though this is not necessary) 
-        return 0; 
-    }(); 
-
-     int titleToNumber(string columnTitle) {
-        int ans = 0;  // Use long long to avoid overflow
+    int titleToNumber(string columnTitle) {
+        int ans = 0;  // Initialize the result variable to store the column number
         
+        // Traverse each character in the column title string
         for (char c : columnTitle) {
-            ans = ans * 26 + (c - 'A' + 1);
+            // Calculate the position value of the current character in the alphabet
+            int value = c - 'A' + 1;
+            
+            // Update ans by shifting left (multiplying by 26) and adding the current character's value
+            ans = ans * 26 + value;
         }
 
-        return ans;  // Cast back to int if needed
+        return ans;  // Return the final column number
     }
 };
