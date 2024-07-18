@@ -16,9 +16,4 @@ public:
 
         return ans;  // Cast back to int if needed
     }
-
-    inline int pow(int val, int x){
-        if(x == 0) return 1;
-        return val * pow(val, x-1);
-    }
 };
