@@ -15,29 +15,23 @@ public:
         return tokens;
     }
 
-
     bool wordPattern(string pattern, string s) {
-        auto strs = split(s,' ');
-        
-        if(pattern.length() != strs.size()) return false;
+        auto strs = split(s, ' ');
 
-        for(int i = 0; pattern[i] != '\0'; i++){
+        if (pattern.length() != strs.size()) return false;
+
+        for (int i = 0; i < pattern.length(); ++i) {
             char ch = pattern[i];
-            string word = strs[i];
+            const string &word = strs[i];
 
             auto citr = cwmap.find(ch);
             auto witr = wcmap.find(word);
 
-            if(citr == cwmap.end() && witr == wcmap.end()){
-                cwmap[ch]=word;
-                wcmap[word]=ch;
-            }else if(citr == cwmap.end() && witr != wcmap.end()){
+            if (citr == cwmap.end() && witr == wcmap.end()) {
+                cwmap[ch] = word;
+                wcmap[word] = ch;
+            } else if (citr == cwmap.end() || witr == wcmap.end() || citr->second != word || witr->second != ch) {
                 return false;
-            }else if(citr != cwmap.end() && witr == wcmap.end()){
-                return false;
-            }else {
-                if(!(cwmap[ch] == word && wcmap[word] == ch))
-                    return false;
             }
         }
 
