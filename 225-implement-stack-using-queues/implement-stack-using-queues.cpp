@@ -1,31 +1,39 @@
+#include <queue>
+using namespace std;
+
 class MyStack {
-    queue<int> q1,q2;
+    queue<int> q1; // Single queue used to implement the stack
+    
 public:
-    MyStack() {
-        
-    }
+    // Constructor to initialize the stack
+    MyStack() { }
     
+    // Pushes element x onto the stack.
     void push(int x) {
-        q2.push(x);
+        q1.push(x); // Enqueue the new element
 
-        while(!q1.empty()){
-            q2.push(q1.front());q1.pop();
+        // Rotate the queue to place the new element at the front
+        for(int i = 0; i < q1.size() - 1; i++) {
+            q1.push(q1.front()); // Move the front element to the back
+            q1.pop(); // Remove the front element from the queue
         }
-
-        swap(q1, q2);
     }
     
+    // Removes the element on top of the stack and returns it.
     int pop() {
-        auto val = q1.front();q1.pop();
-        return val;
+        int val = q1.front(); // Get the front element of the queue
+        q1.pop(); // Remove the front element from the queue
+        return val; // Return the removed element
     }
     
+    // Returns the element on top of the stack without removing it.
     int top() {
-        return q1.front();
+        return q1.front(); // Return the front element of the queue
     }
     
+    // Checks if the stack is empty.
     bool empty() {
-        return q1.empty();
+        return q1.empty(); // Stack is empty if the queue is empty
     }
 };
 
