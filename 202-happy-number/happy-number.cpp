@@ -1,11 +1,14 @@
 class Solution {
     unordered_map<int,bool> map;
 public:
-    bool isHappy(int n) {
-        return isHappyUtil(n);
-    }
+     int speed = []() {
+        ios::sync_with_stdio(false); // Disable synchronization with C I/O 
+        cin.tie(NULL); // Untie cin from cout 
+        cout.tie(NULL); // Untie cout (though this is not necessary) 
+        return 0; 
+    }(); 
 
-    bool isHappyUtil(int n){
+    bool isHappy(int n){
         if(map[n]) return false;
  
         map[n] = true;
@@ -19,6 +22,6 @@ public:
 
         if(sum == 1) return true;
 
-        return isHappyUtil(sum);
+        return isHappy(sum);
     }
 };
