@@ -14,7 +14,7 @@ public:
             ans = ans * 26 + (c - 'A' + 1);
         }
 
-        return static_cast<int>(ans);  // Cast back to int if needed
+        return ans;  // Cast back to int if needed
     }
 
     inline int pow(int val, int x){
