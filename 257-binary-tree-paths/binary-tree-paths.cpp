@@ -10,22 +10,26 @@
  * };
  */
 class Solution {
-    vector<string> ans;
+    vector<string> ans; // This will store all the paths from root to leaf nodes
 public:
     vector<string> binaryTreePaths(TreeNode* root) {
-        binaryTreePathsUtil(root, "");
-        return ans;
+        binaryTreePathsUtil(root, ""); // Call the utility function to populate ans
+        return ans; // Return the vector containing all the paths
     }
 
     void binaryTreePathsUtil(TreeNode* root, string str) {
-        if(root == nullptr) return;
-        
+        if(root == nullptr) return; // Base case: If root is null, return
+
+        // If we reach a leaf node (both left and right children are null), add the path to ans
         if(root->left == nullptr && root->right == nullptr){
-            ans.push_back(str+to_string(root->val));
+            ans.push_back(str + to_string(root->val));
             return;
         }
 
-        str += to_string(root->val)+"->";
+        // If not a leaf node, append the current node value to the path string
+        str += to_string(root->val) + "->";
+
+        // Recursively call for left and right children
         binaryTreePathsUtil(root->left, str);
         binaryTreePathsUtil(root->right, str);
     }
