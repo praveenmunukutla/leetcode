@@ -27,11 +27,12 @@ public:
         int ans = 0; // Initialize a variable to store the count of 1 bits
         
         // Iterate through each bit of n
-        while(n){
-            n = n & n-1;
-            ans++;
+        while (n) {
+            n = n & (n - 1); // Clear the lowest set bit in n
+            ans++; // Increment the count of 1 bits
         }
         
         return ans; // Return the count of 1 bits (Hamming weight)
     }
+
 };
