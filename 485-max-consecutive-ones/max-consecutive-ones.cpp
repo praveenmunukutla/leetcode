@@ -1,18 +1,23 @@
 class Solution {
 public:
-    int findMaxConsecutiveOnes(vector<int>& nums) {
-        int msum = INT_MIN;
-        int sum = 0;
-        for(auto n : nums){
-            if(n == 1) 
-                sum += n;
-            else {
-                msum = max(msum, sum);
-                sum = 0;
+    int findMaxConsecutiveOnes(std::vector<int>& nums) {
+        int maxCount = 0; // Initialize to 0
+        int currentCount = 0;
+        
+        for (int n : nums) {
+            if (n == 1) {
+                // Increment the count for consecutive ones
+                currentCount++;
+            } else {
+                // Update the maximum count and reset current count
+                maxCount = std::max(maxCount, currentCount);
+                currentCount = 0;
             }
         }
-
-        msum = max(msum, sum);
-        return msum;
+        
+        // Final check to update maxCount after the loop
+        maxCount = std::max(maxCount, currentCount);
+        
+        return maxCount;
     }
 };
