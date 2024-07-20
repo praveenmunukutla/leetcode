@@ -5,7 +5,6 @@ public:
         if(num == 0) return "0";
 
         unsigned int n = num;
-
         string hex = "0123456789abcdef";
 
         while(n > 0){
