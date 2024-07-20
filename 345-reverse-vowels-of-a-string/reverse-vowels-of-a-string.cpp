@@ -15,11 +15,11 @@ public:
             while(i <  j && !isvowel(s[i])){
                 i++;
             }
-            while(i <  j && !isvowel(s[j])){
+            while(i <  j && !isvowel(s[j])){ // i < j biggest mistake; always check for boundaries in string ops
                 j--;
             }
 
-            if(i > j) break;
+            if(i > j) break; // mistake - should have checked for this.
 
             swap(s[i],s[j]);
             i++,j--;
