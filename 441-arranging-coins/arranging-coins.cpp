@@ -1,14 +1,8 @@
 class Solution {
 public:
     int arrangeCoins(int n) {
-        int i = 1;
-        int count = 0;
-        while(i <= n){
-            n = n - i;
-            i++;
-            count++;
-        }
-
-        return count;
+        // Calculate the maximum number of complete rows k
+        double k = (-1 + std::sqrt(1 + 8.0 * n)) / 2;
+        return static_cast<int>(k);
     }
 };
