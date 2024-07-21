@@ -1,23 +1,20 @@
 class MyHashSet {
-    unordered_set<int> uset;
+    vector<bool> set;
 public:
     MyHashSet() {
-        
+        set = vector<bool>(1000001,false);
     }
     
     void add(int key) {
-        uset.insert(key);
+        set[key] = true;
     }
     
     void remove(int key) {
-        if(uset.find(key) != uset.end())
-            uset.erase(key);
+        set[key] = false;
     }
     
     bool contains(int key) {
-        if(uset.find(key) != uset.end())
-        return true;
-        return false;
+        return set[key];
     }
 };
 
