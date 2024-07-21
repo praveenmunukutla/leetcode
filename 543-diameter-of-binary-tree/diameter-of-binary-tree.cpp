@@ -1,14 +1,3 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
     int diameter = 0;
 public:
@@ -18,13 +7,15 @@ public:
     }
 
     int depth(TreeNode* root){
-        if(root == nullptr) return 0;
+        if (root == nullptr) return 0;
 
-        int lh = depth(root->left);
-        int rh = depth(root->right);
+        int lh = depth(root->left);  // Get the depth of the left subtree
+        int rh = depth(root->right); // Get the depth of the right subtree
 
-        diameter = max(lh+rh, diameter);
+        // Update the diameter to be the maximum of its current value and the path through the root
+        diameter = max(diameter, lh + rh);
 
-        return 1+max(lh,rh);
+        // Return the height of the current node
+        return 1 + max(lh, rh);
     }
 };
