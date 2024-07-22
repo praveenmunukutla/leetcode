@@ -14,19 +14,20 @@ public:
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
         string rootstr = "";
         string substr = "";
-        inOrder(root,rootstr);
-        inOrder(subRoot, substr);
+        preOrder(root,rootstr);
+        preOrder(subRoot, substr);
         return rootstr.find(substr) != string::npos;
     }
 
-    void inOrder(TreeNode* root, string& ans){
+    void preOrder(TreeNode* root, string& ans){
         if(root == nullptr){
             ans += "X";
             return;
         }
 
+        
+        preOrder(root->left, ans);
+        preOrder(root->right, ans);
         ans += "$"+to_string(root->val)+"$";
-        inOrder(root->left, ans);
-        inOrder(root->right, ans);
     }
 };
