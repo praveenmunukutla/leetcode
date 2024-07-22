@@ -16,6 +16,7 @@ public:
         string substr = "";
         inOrder(root,rootstr);
         inOrder(subRoot, substr);
+        cout<<rootstr<<" "<<substr<<endl;
         return rootstr.find(substr) != string::npos;
     }
 
