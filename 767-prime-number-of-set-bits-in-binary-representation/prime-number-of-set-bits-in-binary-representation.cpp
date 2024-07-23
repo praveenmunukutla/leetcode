@@ -2,24 +2,17 @@ class Solution {
 public:
     int countPrimeSetBits(int left, int right) {
         int count = 0;
+
+        std::unordered_set<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
         vector<int> cache = vector<int>(right+5, 0);
         for(int i = 1; i <= right; i++){
             cache[i] = cache[i/2]+(i&1);
         }
 
         for(int i = left; i <= right; i++){
-            if(isPrime(cache[i])) count++;
+            if(primes.find(cache[i]) != primes.end()) count++;
         }
 
         return count;
-    }
-
-    inline bool isPrime(int val){
-        if(val == 0 || val == 1) return false;
-        if(val == 2) return true;
-        for(int i = 2; i <= val/i; i++){
-            if(val%i == 0) return false;
-        }
-        return true;
     }
 };
