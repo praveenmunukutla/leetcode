@@ -14,7 +14,7 @@ public:
         return count;
     }
 
-    bool isPrime(int val){
+    inline bool isPrime(int val){
         if(val == 0 || val == 1) return false;
         if(val == 2) return true;
         for(int i = 2; i <= val/i; i++){
