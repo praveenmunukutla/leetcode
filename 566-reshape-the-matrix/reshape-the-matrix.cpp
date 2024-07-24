@@ -1,6 +1,13 @@
 class Solution {
     vector<vector<int>> ans; // Declare a member variable to store the reshaped matrix
 public:
+      int speed = []() {
+        ios::sync_with_stdio(false); // Disable synchronization with C I/O 
+        cin.tie(NULL); // Untie cin from cout 
+        cout.tie(NULL); // Untie cout (though this is not necessary) 
+        return 0; 
+    }(); 
+
     vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int r, int c) {
         int mrows = mat.size();     // Get the number of rows in the original matrix
         int mcols = mat[0].size();  // Get the number of columns in the original matrix
