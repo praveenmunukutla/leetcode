@@ -13,9 +13,9 @@ public:
     }
 
     string toGoatLatin(string sentence) {
-        vector<string> process;
         vector<string> tokens = splitStrings(sentence);
-        
+        string ans = "";
+
         int i = 1;
         for(auto t : tokens){
             int d = i;
@@ -31,13 +31,9 @@ public:
                 d--;
             }
             i++;
-            process.push_back(t);
+            ans += t + " ";
         }
 
-        string ans = "";
-        for(auto t : process)
-            ans += t + " ";
-        
         ans.pop_back();
         return ans;
     }
