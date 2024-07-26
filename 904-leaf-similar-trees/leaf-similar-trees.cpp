@@ -14,14 +14,23 @@ class Solution {
     vector<int> leafnodes2;
 public:
     bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+        // Collect leaf nodes for both trees
         leafSimilarUtil(root1, leafnodes1);
         leafSimilarUtil(root2, leafnodes2);
+        
+        // Compare the leaf node sequences
         return leafnodes1 == leafnodes2;
     }
+    
     void leafSimilarUtil(TreeNode* root, vector<int>& leafnode){
-        if(root == nullptr) return;
-
-        if(root->left == nullptr && root->right == nullptr) leafnode.push_back(root->val);
+        if (root == nullptr) return;  // Base case: If the node is null, do nothing
+        
+        // Check if the current node is a leaf node
+        if (root->left == nullptr && root->right == nullptr) {
+            leafnode.push_back(root->val);  // Add leaf node value to the vector
+        }
+        
+        // Recursively traverse the left and right children
         leafSimilarUtil(root->left, leafnode);
         leafSimilarUtil(root->right, leafnode);
     }
