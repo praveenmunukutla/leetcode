@@ -17,14 +17,6 @@ public:
        return sum;   
     }
 
-    int getDecimal(string ans){
-        int sum = 0;
-        for(auto c : ans)
-            sum = sum * 2 + (c-'0');
-
-        return sum;
-    }
-
     void util(TreeNode* root, int currSum){
         if(root == nullptr) return;
 
