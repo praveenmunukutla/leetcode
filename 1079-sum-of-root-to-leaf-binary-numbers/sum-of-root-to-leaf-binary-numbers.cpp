@@ -13,7 +13,7 @@ class Solution {
     int sum = 0;
 public:
     int sumRootToLeaf(TreeNode* root) {
-       util(root, "");
+       util(root, 0);
        return sum;   
     }
 
@@ -25,17 +25,17 @@ public:
         return sum;
     }
 
-    void util(TreeNode* root, string ans){
+    void util(TreeNode* root, int currSum){
         if(root == nullptr) return;
 
         if(root->left == nullptr && root->right == nullptr){
-            ans += to_string(root->val);
-            sum += getDecimal(ans);
+            currSum = currSum*2+root->val;
+            sum += currSum;
             return;
         }
 
-        ans += to_string(root->val);
-        util(root->left, ans);
-        util(root->right, ans);
+        currSum = currSum*2 + root->val;
+        util(root->left, currSum);
+        util(root->right, currSum);
     }
 };
