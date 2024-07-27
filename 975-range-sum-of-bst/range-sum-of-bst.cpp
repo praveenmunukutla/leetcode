@@ -13,15 +13,18 @@ class Solution {
     int sum = 0;
 public:
     int rangeSumBST(TreeNode* root, int low, int high) {
-        rangeSumBSTUtil(root, low, high);
-        return sum;
+        return rangeSumBSTUtil(root, low, high);
     }
-    
-    void rangeSumBSTUtil(TreeNode* root, int low, int high) {
-        if(root == nullptr) return;
 
-        rangeSumBSTUtil(root->left, low, high);
-        if(root->val >= low && root->val <= high) sum += root->val;
-        rangeSumBSTUtil(root->right, low, high);
+    int rangeSumBSTUtil(TreeNode* root, int low, int high) {
+        if(root == nullptr) return 0;
+
+        if(low > root->val)
+            return rangeSumBSTUtil(root->right, low, high);
+        
+        if(high < root->val)
+            return rangeSumBSTUtil(root->left, low, high);
+        
+        return root->val + rangeSumBSTUtil(root->left, low, high) + rangeSumBSTUtil(root->right, low, high);
     }
 };
