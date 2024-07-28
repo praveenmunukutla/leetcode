@@ -6,7 +6,7 @@ public:
         unsigned long long int dec = 0;  // This will hold the current decimal value of the binary prefix
         for(int i = 0; i < nums.size(); i++) {
             // Update the decimal value by shifting left (equivalent to multiplying by 2)
-            // and adding the current binary digit
+            // and adding the current binary digit, then take modulo 5 to avoid large numbers
             dec = ((((unsigned long long)dec) * 2) + nums[i]) % 5;
 
             // Check if the current decimal value is divisible by 5
