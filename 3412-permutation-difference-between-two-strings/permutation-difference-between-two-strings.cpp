@@ -8,7 +8,7 @@ public:
         index = 0;
         int sum = 0;
         for(auto c: t){
-            umap[c] = umap[c] > index ? umap[c]-index : index - umap[c];
+            umap[c] = abs(umap[c] - index);
             index ++;
             sum += umap[c];
         }
