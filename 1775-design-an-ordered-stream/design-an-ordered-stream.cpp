@@ -1,9 +1,11 @@
 class OrderedStream {
     vector<pair<string, bool>> ans;
     int sn;
+    int index;
 public:
     OrderedStream(int n) {
         sn = n;
+        index = 1;
         ans = vector<pair<string, bool>>(n+2, {"", false});
     }
     
@@ -11,14 +13,11 @@ public:
         ans[idKey] = {value, false};
         
         vector<string> res;
-        for(int i = 1; i <= sn; i++){
-            if(ans[i].first.empty()){
-                break;
-            }
-            if(!ans[i].second){
-                res.push_back(ans[i].first);
-                ans[i].second = true;
-            }
+
+        while(index <= sn && !ans[index].first.empty() && !ans[index].second){
+            res.push_back(ans[index].first);
+            ans[index].second = true;
+            index++;
         }
 
         return res;
