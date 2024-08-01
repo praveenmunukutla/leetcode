@@ -5,7 +5,6 @@ public:
         for(int i = 0; i < len-1; i++){
             int fi = s[i]-'0';
             int se = s[i+1]-'0';
-            cout<<""<<fi<<" "<<se<<endl;
             if((fi%2==1) && (se%2==1)){
                 //odd
                 if(fi > se){
