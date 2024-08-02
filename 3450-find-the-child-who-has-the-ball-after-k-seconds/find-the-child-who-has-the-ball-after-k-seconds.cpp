@@ -1,22 +1,16 @@
 class Solution {
-    enum direction{
-        increase,
-        decrease
-    };
 public:
     int numberOfChild(int n, int k) {
-        int index = 0;
-        direction d;
-        while(k){
-            if(index == 0) d = direction::increase;
-            else if(index == n-1) d = direction::decrease;
+        n--; // Decrement n to simplify calculation (so range is now 0 to n-1)
+        int rounds = k / n; // Calculate the number of complete back-and-forth trips
+        int rem = k % n; // Calculate the remaining steps after the last complete trip
 
-            if(d == direction::increase) index++;
-            else if(d == direction::decrease) index--;
-
-            k--;
+        if(rounds % 2 == 0) {
+            // If the number of complete back-and-forth trips is even
+            return rem; // The ball is passed forward from the start
+        } else {
+            // If the number of complete back-and-forth trips is odd
+            return (n - rem); // The ball is passed backward from the end
         }
-
-        return index;
     }
 };
