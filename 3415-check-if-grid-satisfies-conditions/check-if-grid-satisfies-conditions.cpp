@@ -1,7 +1,7 @@
 class Solution {
     int row, col;
 public:
-    bool isValid(vector<vector<int>>& grid, int x, int y){
+    inline bool isValid(vector<vector<int>>& grid, int x, int y){
         if(x+1 < row){
             if(grid[x][y] !=grid[x+1][y]) return false;
         }
