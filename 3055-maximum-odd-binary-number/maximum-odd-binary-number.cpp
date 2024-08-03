@@ -2,29 +2,20 @@ class Solution {
 public:
     string maximumOddBinaryNumber(string s) {
         int count = 0;
-        for(auto c : s) if(c == '1') count++;
+        
+        // Count the number of '1's in the input string
+        for (auto c : s) {
+            if (c == '1') count++;
+        }
+        
         int len = s.length();
-
-        string ans = "";
-        int aones = count-1;
-        int azeros = len - count;
-        count = count - (count-1);
-
-        while(aones > 0){
-            ans += "1";
-            aones--;
-        }
-
-        while(azeros > 0){
-            ans += "0";
-            azeros--;
-        }
-
-        while(count > 0){
-            ans += "1";
-            count--;
-        }
-
+        int zcount = len - count; // Calculate the number of '0's
+        
+        // Create a string with (count-1) '1's followed by zcount '0's
+        string ans = string(count - 1, '1');
+        ans += string(zcount, '0');
+        ans += '1'; // Append the final '1' to make the number odd
+        
         return ans;
     }
 };
