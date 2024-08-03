@@ -11,8 +11,7 @@ public:
                     long long diff = nums[i] - nums[j];
                     if(diff < 0) diff = 0;
                     long long val = diff * nums[k];
-                    if(val > maxval)
-                        maxval = val;
+                    maxval = max(val, maxval);
                 }
             }
         }
