@@ -9,7 +9,6 @@ public:
                     if(nums[i] < nums[j]) break;
 
                     long long diff = nums[i] - nums[j];
-                    if(diff < 0) diff = 0;
                     long long val = diff * nums[k];
                     maxval = max(val, maxval);
                 }
