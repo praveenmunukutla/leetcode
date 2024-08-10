@@ -8,20 +8,26 @@ public:
             alist[e[0]].push_back(e[1]);
             alist[e[1]].push_back(e[0]);
         }
-        Util(source, destination);
-        return visited[destination];
+        
+        return Util(source, destination);
     }
 
-    void Util(int source, int destination){
-        if(visited[source] == true) return;
+    bool Util(int source, int destination){
 
-        if(visited[destination] == true) return;
+        if(visited[source] == true) return false;
+        
+        visited[source] = true;
+
+        if(destination == source) return true;
 
         visited[source] = true;
 
         auto sourceEdges = alist[source];
+        bool isValid = false;
         for(auto e : sourceEdges){
-            Util(e, destination);
+            isValid = isValid || Util(e, destination);
         }
+
+        return isValid;
     }
 };
