@@ -18,6 +18,10 @@ public:
             }
 
             // If the character repeats two or more times, add it twice to the result
+            // aaa = aa
+            // aaaa = aa
+            // aaaaa = aa
+            // aaaaaa = aa
             if(count >= 2) {
                 ans += curr;
                 ans += curr;
