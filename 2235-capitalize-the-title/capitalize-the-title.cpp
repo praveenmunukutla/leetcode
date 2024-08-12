@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<string> getTokens(string title){
+    inline vector<string> getTokens(string title){
         stringstream ss(title);
         vector<string> tokens;
         string token;
