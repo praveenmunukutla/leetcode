@@ -12,7 +12,6 @@
 class Solution {
     unsigned int min = UINT_MAX ;
     unsigned int smin = UINT_MAX ;
-    unordered_set<int> uset;
 public:
     int findSecondMinimumValue(TreeNode* root) {
         findSecondMinimumValueUtil(root);
@@ -21,16 +20,12 @@ public:
     void findSecondMinimumValueUtil(TreeNode* root) {
         if(root == nullptr) return;
 
-        if(uset.find(root->val) == uset.end()){
-            if(root->val < min){
-                smin = min;
-                min = root->val;
-            }else if(root->val > min && root->val < smin){
-                smin = root->val;
-            }
-            uset.insert(root->val);
+        if(root->val < min){
+            smin = min;
+            min = root->val;
+        }else if(root->val > min && root->val < smin){
+            smin = root->val;
         }
-        
 
         findSecondMinimumValueUtil(root->left);
         findSecondMinimumValueUtil(root->right);
