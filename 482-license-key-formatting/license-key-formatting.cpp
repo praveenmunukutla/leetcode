@@ -11,11 +11,11 @@ public:
             if(isalnum(s[i])){
                 ans += toupper(s[i]);
                 count++;
-            }
 
-            // Insert a dash after every k characters (but not at the end)
-            if(count % k == 0 && i != 0 && ans.length() != 0 && ans.back() != '-') {
-                ans += '-';
+                // Insert a dash after every k characters (but not at the end)
+                if(count % k == 0) {
+                    ans += '-';
+                }
             }
         }
 
