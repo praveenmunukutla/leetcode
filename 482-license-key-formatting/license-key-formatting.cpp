@@ -3,22 +3,29 @@ public:
     string licenseKeyFormatting(string s, int k) {
         string ans = "";
         int len = s.length();
-        for(int i = len-1, j = 0; i >= 0; i--){
+        int count = 0;
+
+        // Traverse the string in reverse
+        for(int i = len - 1; i >= 0; i--) {
+            // If the current character is alphanumeric, add it to the answer string
             if(isalnum(s[i])){
-                if(isdigit(s[i])){
-                    ans.insert(ans.begin(), s[i]);
-                    j++;
-                }else{
-                    ans.insert(ans.begin(), toupper(s[i]));
-                    j++;
-                }
+                ans += toupper(s[i]);
+                count++;
             }
-            if(j%k == 0 && ans[0] != '-' && ans.length() != 0){
-                ans.insert(ans.begin(), '-');
+
+            // Insert a dash after every k characters (but not at the end)
+            if(count % k == 0 && i != 0 && ans.length() != 0 && ans.back() != '-') {
+                ans += '-';
             }
         }
 
-        if(ans[0] == '-') return ans.substr(1,ans.length());
+           // If the last character is a dash, remove it
+        if(!ans.empty() && ans.back() == '-') {
+            ans.pop_back();
+        }
+
+        // Reverse the answer to get the final result
+        reverse(ans.begin(), ans.end());
 
         return ans;
     }
