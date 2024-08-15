@@ -1,12 +1,12 @@
 class Solution {
     queue<pair<int,int>> q;
 public:
-    vector<int> shortestToChar(string s, char c) {
+    vector<int> shortestToChar(string s, char ch) {
 
         int len = s.length();
         vector<int> dist = vector<int>(len, INT_MAX);
         for(int i = 0; i < len; i++){
-            if(s[i] == c){
+            if(s[i] == ch){
                 q.push({i,0});
             }
         }
