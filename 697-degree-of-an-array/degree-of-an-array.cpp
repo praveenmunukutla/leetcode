@@ -17,13 +17,12 @@ public:
 
         for(auto u : umap){
             auto [f,fi,si] = u.second;
+            auto sasize = si == -1 ? f : si-fi+1;
             if(f > maxFreq){
                 minSub = INT_MAX;
-                auto sasize = si == -1 ? f : si-fi+1;
                 minSub = min(minSub, sasize);       
                 maxFreq = max(maxFreq, f);
             }else if(f == maxFreq){
-                auto sasize = si == -1 ? f : si-fi+1;
                 minSub = min(minSub, sasize);
             }
         }
