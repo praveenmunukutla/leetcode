@@ -3,13 +3,14 @@ public:
     int numUniqueEmails(vector<string>& emails) {
         unordered_set<string> umails;
         for(auto e : emails){
-            auto s = tokens(e, '@');
-            auto part = s[0];
-            auto domain = s[1];
-            auto parts = tokens(part, '+');
-            auto splitFPart = tokens(parts[0],'.');
+            auto splitEmail = tokens(e, '@');
+            auto part = splitEmail[0];
+            auto domain = splitEmail[1];
+            auto emailBeforePlus = tokens(part, '+');
+            auto emailBeforePlusWithDots = tokens(emailBeforePlus[0],'.');
+            
             string ans;
-            for(auto s : splitFPart)
+            for(auto s : emailBeforePlusWithDots)
                 ans += s;
             umails.insert(ans+"@"+domain);
         }
