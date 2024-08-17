@@ -6,15 +6,27 @@ public:
             auto splitEmail = tokens(e, '@');
             auto part = splitEmail[0];
             auto domain = splitEmail[1];
-            auto emailBeforePlus = tokens(part, '+');
-            auto emailBeforePlusWithDots = tokens(emailBeforePlus[0],'.');
-            
-            string ans;
-            for(auto s : emailBeforePlusWithDots)
-                ans += s;
-            umails.insert(ans+"@"+domain);
+
+            // auto emailBeforePlus = tokens(part, '+');
+            // auto emailBeforePlusWithDots = tokens(emailBeforePlus[0],'.');
+            // string ans;
+            // for(auto s : emailBeforePlusWithDots)
+            //     ans += s;
+
+            auto email = cleanEmail(part);            
+            umails.insert(email+"@"+domain);
         }
         return umails.size();
+    }
+
+    string cleanEmail(string s){
+        string ans = "";
+        for(auto c : s){
+            if(c == '+') break;
+            if(c == '.') continue;
+            ans += c;
+        }
+        return ans;
     }
 
     vector<string> tokens(string s, char seperator){
