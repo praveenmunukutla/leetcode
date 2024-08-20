@@ -9,8 +9,7 @@ public:
             int mv = abs(arr[i] - arr[i-1]); // Calculate absolute difference
             
             if(mv < minAD) { 
-                res.clear(); // New minimum found, clear previous results
-                res.push_back({arr[i-1], arr[i]}); // Add new pair
+                res = {{arr[i-1], arr[i]}}; // Add new pair
                 minAD = mv; // Update minimum difference
             } else if(mv == minAD) {
                 res.push_back({arr[i-1], arr[i]}); // Add pair with same minimum difference
