@@ -25,17 +25,11 @@ public:
 
         auto bobStartDate = numberOfDays(getTokens(arriveBob));
         auto bobEndDate = numberOfDays(getTokens(leaveBob));
- 
-        vector<int> days(366,0);
-        int count = 0;
-        for(int i = aliceStartDate; i <= aliceEndDate; i++)days[i]++;
-        for(int i = bobStartDate; i <= bobEndDate; i++)days[i]++;
-        for(int i = 1; i < 366; i++){
-            if(days[i] == 2) count++;
-        }
 
-        return count;
-        
-        
+        // Check for no overlap
+        if (bobStartDate > aliceEndDate || aliceStartDate > bobEndDate) return 0;
+
+        // Calculate the number of overlapping days
+        return max(0, min(aliceEndDate, bobEndDate) - max(aliceStartDate, bobStartDate) + 1);
     }
 };
