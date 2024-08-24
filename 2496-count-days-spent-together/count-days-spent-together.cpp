@@ -26,10 +26,9 @@ public:
         auto bobStartDate = numberOfDays(getTokens(arriveBob));
         auto bobEndDate = numberOfDays(getTokens(leaveBob));
 
-        // Check for no overlap
-        if (bobStartDate > aliceEndDate || aliceStartDate > bobEndDate) return 0;
+        if(bobStartDate > aliceEndDate) return 0;
+        if(aliceStartDate > bobEndDate) return 0;
 
-        // Calculate the number of overlapping days
-        return max(0, min(aliceEndDate, bobEndDate) - max(aliceStartDate, bobStartDate) + 1);
+        return max(0, min(bobEndDate,aliceEndDate) - max(aliceStartDate,bobStartDate) + 1);
     }
 };
