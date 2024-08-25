@@ -7,7 +7,6 @@ public:
             else if(n == 0) return 0;
         }
 
-        if(cz > 0) return 0;
         return (cn%2==1) ? -1 : 1;
     }
 };
