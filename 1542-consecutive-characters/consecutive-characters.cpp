@@ -7,10 +7,11 @@ public:
             char ch = s[i];
             int j = i+1;
             int count = 1;
-            while(s[j] == ch){
+            while(j < len && s[j] == ch){
                 j++;
                 count++;
             }
+            i = j-1;
             maxAns = max(maxAns, count);
         }
         return maxAns;
