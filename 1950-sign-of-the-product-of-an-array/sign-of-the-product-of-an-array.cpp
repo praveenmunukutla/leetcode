@@ -1,11 +1,10 @@
 class Solution {
 public:
     int arraySign(vector<int>& nums) {
-        int cp = 0, cn = 0, cz = 0;
+        int cn = 0, cz = 0;
         for(auto n : nums){
             if(n < 0)cn++;
-            else if(n > 0)cp++;
-            else if(n == 0)cz++;
+            else if(n == 0) return 0;
         }
 
         if(cz > 0) return 0;
