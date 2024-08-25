@@ -4,9 +4,13 @@ public:
         int rows = grid.size();
         int cols = grid[0].size();
         int count = 0;
-        for(int i = 0; i < rows; i++){
-            for(int j = 0; j < cols; j++){
-                if(grid[i][j] < 0 )count++;
+        int x = 0, y = cols-1;
+        while(y >= 0 && x < rows){
+            if(grid[x][y] < 0){
+                count += rows-x;
+                y--;
+            }else {
+                x++;
             }
         }
         return count;
