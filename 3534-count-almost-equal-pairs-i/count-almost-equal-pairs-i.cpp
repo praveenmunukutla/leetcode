@@ -18,7 +18,6 @@ public:
                  while(s1.length() < s2.length()) s1 = "0"+s1;
                  while(s2.length() < s1.length()) s2 = "0"+s2;
                                 
-                 //diff 0 case:
                  int countdiff = 0;
                  vector<int> indexes;
                  for(int k = 0; k < s1.length(); k++){
