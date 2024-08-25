@@ -1,7 +1,7 @@
 class Solution {
 public:
     int countLargestGroup(int n) {
-        unordered_map<int,vector<int>> umap;
+        unordered_map<int,int> umap;
         for(int i = 1; i <= n; i++){
             int sum = 0;
             int tval = i;
@@ -9,17 +9,17 @@ public:
                 sum += tval%10;
                 tval = tval/10;
             }
-            umap[sum].push_back(i);
+            umap[sum]++;
         }
 
         int largestSize = 0;
         int largestSizeCount = 0;
 
         for(auto u : umap){
-            if(u.second.size() > largestSize){
-                largestSize = u.second.size();
+            if(u.second > largestSize){
+                largestSize = u.second;
                 largestSizeCount = 1;
-            }else if(u.second.size() == largestSize){
+            }else if(u.second == largestSize){
                 largestSizeCount++;
             }
         }
