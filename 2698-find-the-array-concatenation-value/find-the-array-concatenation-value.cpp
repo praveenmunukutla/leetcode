@@ -4,8 +4,9 @@ public:
         long long ans = 0;
         int start = 0;
         int end = nums.size()-1;
-        
+
         while(start <= end){
+            
             string c = "";
             if(start != end)
                c = to_string(nums[start]) + to_string(nums[end]);
