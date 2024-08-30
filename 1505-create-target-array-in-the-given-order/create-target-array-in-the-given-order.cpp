@@ -8,8 +8,8 @@ public:
             int ind = index[i];
             int val = nums[i];
 
-            for(int i = len-1; i > 0 && i > ind; i--){
-                ans[i] = ans[i-1];
+            for(int j = len-1; j > 0 && j > ind; j--){
+                ans[j] = ans[j-1];
             }
 
             ans[ind] = val;
