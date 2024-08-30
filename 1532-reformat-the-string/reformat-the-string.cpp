@@ -22,16 +22,18 @@ public:
             return ans;
         }
 
-        string gstr = dlen > alen ? dig : alpha;
-        string sstr = dlen > alen ? alpha : dig;
-        int slen = dlen > alen ? alen : dlen;
+        string& gstr = dlen > alen ? dig : alpha;
+        string& sstr = dlen > alen ? alpha : dig;
+        int& slen = dlen > alen ? alen : dlen;
+        int& glen = dlen > alen ? dlen : alen;
 
         string ans = "";   
         for(int i = 0; i < slen; i++){
             ans += string(1,gstr[i]) + string(1,sstr[i]);
         }
 
-        ans += string(1, gstr[gstr.length()-1]);
+
+        ans += string(1, gstr[glen-1]);
         return ans;
     }
 };
