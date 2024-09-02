@@ -1,22 +1,20 @@
 class Solution {
 public:
     int chalkReplacer(vector<int>& chalk, int k) { 
-        long long int sum = 0;     
-        for(auto c : chalk){
+        long long sum = 0;     
+        for (int c : chalk) {
             sum += c;
         }
 
-        k = k%sum;
+        // Reduce k to the remainder after completing full rounds
+        k = k % sum;
 
-        for(int i = 0; i < chalk.size();i++){
-            int val = chalk[i];
-            if(val > k) return i;
-            k = k - val;
-            if(i == chalk.size()-1){
-                i = -1;
-            }
-        }        
+        // Find the student who will be unable to finish their chalk
+        for (int i = 0; i < chalk.size(); i++) {
+            if (chalk[i] > k) return i;
+            k -= chalk[i];
+        }
 
-        return 0;        
+        return 0; // This line should never be reached based on the problem constraints
     }
 };
