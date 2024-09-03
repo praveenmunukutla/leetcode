@@ -1,26 +1,28 @@
 class Solution {
 public:
     string convert(string s, int numRows) {
+        // Return the string as is if no zigzag pattern is needed.
         if(numRows == 1) return s;
 
-        vector<string> ans(numRows,"");
+        // Store characters for each row.
+        vector<string> ans(numRows, "");
         int index = 0;
         int direction = 1;
-        
-        for(auto c : s){
-            ans[index] += string(1, c);
-            if(index == numRows-1)
-                direction = -1;
-            else if(index == 0)
-                direction = 1;
+
+        // Traverse through the string.
+        for(auto c : s) {
+            ans[index] += c;  // Add character to the current row.
             
-            index += direction;
+            // Change direction at the first or last row.
+            if(index == numRows - 1) direction = -1;
+            else if(index == 0) direction = 1;
+
+            index += direction;  // Move to the next row.
         }
 
-
-        string ansstr ="";
-        for(auto a : ans)
-            ansstr += a;
+        // Concatenate all rows to form the final result.
+        string ansstr = "";
+        for(auto a : ans) ansstr += a;
 
         return ansstr;
     }
