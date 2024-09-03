@@ -2,29 +2,21 @@ class Solution {
 public:
     string convert(string s, int numRows) {
         if(numRows == 1) return s;
-        
+
         vector<string> ans(numRows,"");
-        bool dirDown = true;
         int index = 0;
-        int sindex = 0;
-        while(s[sindex] != '\0'){
-
-            ans[index] += string(1, s[sindex]);
-
-            if(index == numRows-1){
-                dirDown = false;
-            }else if(index == 0){
-                dirDown = true;
-            }
-
-            if(dirDown){
-                index++;
-            }else{
-                index--;
-            }
-
-            sindex++;
+        int direction = 1;
+        
+        for(auto c : s){
+            ans[index] += string(1, c);
+            if(index == numRows-1)
+                direction = -1;
+            else if(index == 0)
+                direction = 1;
+            
+            index += direction;
         }
+
 
         string ansstr ="";
         for(auto a : ans)
