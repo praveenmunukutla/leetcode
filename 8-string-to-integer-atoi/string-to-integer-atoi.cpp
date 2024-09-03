@@ -1,41 +1,34 @@
-#include <string>
-#include <climits>
-#include <cctype>
-
 class Solution {
 public:
-    int myAtoi(std::string s) {
-        int i = 0;
-        int n = s.length();
-        
-        // Step 1: Trim leading whitespaces
-        while (i < n && isspace(s[i])) {
-            i++;
-        }
-
-        // Step 2: Handle optional sign
+    int myAtoi(string s) {
+        int index = 0;
+        int len = s.length();
         int sign = 1;
-        if (i < n && (s[i] == '+' || s[i] == '-')) {
-            sign = (s[i] == '-') ? -1 : 1;
-            i++;
+ 
+        // skip leading white spaces.
+        while(s[index] == ' ' && index < len)
+            index++;
+
+        // determine the sign.
+        if(s[index] == '-' || s[index] == '+'){
+            sign = s[index] == '-' ? -1 : 1;
+            index ++;
         }
 
-        // Step 3: Convert valid digits to number
-        long result = 0;  // Use long to handle overflow
-        while (i < n && isdigit(s[i])) {
-            result = result * 10 + (s[i] - '0');
-            
-            // Step 4: Handle overflow
-            if (result * sign > INT_MAX) {
-                return INT_MAX;
-            } else if (result * sign < INT_MIN) {
-                return INT_MIN;
+        //calculate result and break if you find characters.
+        long result = 0;
+        for(int i = index ; i < len; i++){
+            if(isdigit(s[i])){
+                result = (result*10+ (s[i]-'0'));
+                //handle overlow and return INT_MAX if result exceeds INT_MAX.
+                // like wise for the  INT_MIN.
+                if(result * sign > INT_MAX) return INT_MAX;
+                else if(result * sign < INT_MIN) return INT_MIN;
+            }else{
+                break;
             }
-
-            i++;
         }
 
-        // Step 5: Return the result with the correct sign
-        return static_cast<int>(result * sign);
+        return result*sign;
     }
 };
