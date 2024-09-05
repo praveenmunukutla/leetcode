@@ -7,11 +7,11 @@ public:
             sort(s.begin(), s.end());
             umap[s].push_back(t);
         }
+
         vector<vector<string>> res;
         for(auto u : umap){
             res.emplace_back(u.second);
         }
-
         return res;
     }
 };
