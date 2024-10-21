@@ -32,7 +32,7 @@ public:
 
         ListNode* toDel = slow->next;
         slow->next = slow->next->next;
-        delete toDel;
+        
 
         return head;
     }
