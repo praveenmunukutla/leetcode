@@ -10,13 +10,9 @@ public:
         stack<char> sta;
         for(auto c : s){
             if(umap.find(c) != umap.end()){
-                if(sta.empty())
+                if(sta.empty() || sta.top() != umap[c])
                     return false;
-                if(sta.top() == umap[c]){
-                    sta.pop();
-                }else {
-                    return false;
-                }
+                sta.pop();
             }else{
                 sta.push(c);
             }
