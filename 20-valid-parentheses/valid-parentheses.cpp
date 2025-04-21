@@ -1,17 +1,24 @@
 class Solution {
-    unordered_map<char,char> map = {{'}','{'},{')','('},{']','['}};
-    stack<char> sta;
 public:
     bool isValid(string s) {
-        for(auto c: s){
-            if(map.find(c) == map.end()){
-                sta.push(c);
-            }else {
-                if(!sta.empty() && sta.top() == map[c]){
-                    sta.pop();
-                }
-                else
+        unordered_map<char,char> umap = {
+            {')','('},
+            {'}','{'},
+            {']','['}
+        };
+
+        stack<char> sta;
+        for(auto c : s){
+            if(umap.find(c) != umap.end()){
+                if(sta.empty())
                     return false;
+                if(sta.top() == umap[c]){
+                    sta.pop();
+                }else {
+                    return false;
+                }
+            }else{
+                sta.push(c);
             }
         }
 
