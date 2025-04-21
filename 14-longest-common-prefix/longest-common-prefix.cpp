@@ -1,22 +1,24 @@
+#define min(a,b) ((a)>(b)?(b):(a))
+
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        int i, j;
-        auto fstr = strs[0];
-        int checkLen = fstr.length();
-        for(i = 1; i < strs.size(); i++){
-            auto cstr = strs[i];
-            for(j = 0; j < checkLen && cstr[j] != '\0'; j++){
-                if(fstr[j] != cstr[j]){
-                    checkLen = j;
+        int minLen = INT_MAX;
+        for(int i = 0; i < strs.size(); i++){
+            minLen = min(minLen, strs[i].length());
+        }
+
+        auto& sstr = strs[0];
+        for(int i = 1; i < strs.size(); i++){
+            auto& cstr = strs[i];
+            for(int j = 0; j < minLen; j++){
+                if(cstr[j] != sstr[j]){
+                    minLen = j;
                     break;
                 }
             }
-            if(cstr[j] == '\0'){
-                checkLen = j;
-            }
         }
 
-        return fstr.substr(0, checkLen);
+        return sstr.substr(0, minLen);
     }
 };
